@@ -2,6 +2,7 @@ package com.ex;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 class Fraction_Addition_Substraction{ 
@@ -123,8 +124,11 @@ class Fraction_Addition_Substraction{
 		//int num1=1, den1=500, num2=2, den2=1500; 
 		//System.out.print(num1+"/"+den1+" + "+num2+"/"+den2+" is equal to "); 
 		//addFraction(num1, den1, num2, den2);
-		String s = "1/3-1/2";
+		String s = "-1/3-1/2";
 		System.out.println(fractionAddition(s));
+		
+
+		main(null);
 		
 	} 
 	} 

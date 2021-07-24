@@ -44,19 +44,26 @@ public class CustomSortHashMap {
 		// can do this by writing your own comparator, which takes 
 		// Map.Entry object and arrange them in order increasing 
 		// or decreasing by values. 
-		Comparator<Entry<String, Integer>> valueComparator = new Comparator<Entry<String,Integer>>() 
-		{ 
-			@Override public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2) 
-			{ 
-				//Integer v1 = e1.getValue(); Integer v2 = e2.getValue(); 
-				int num = e2.getValue().compareTo(e1.getValue());
-				if(num==0) {
-					return e1.getKey().compareTo(e2.getKey());
-				}
-				return num;
-				//return v1.compareTo(v2); 
-			} 
-		}; 
+//		Comparator<Entry<String, Integer>> valueComparator = new Comparator<Entry<String,Integer>>() 
+//		{ 
+//			@Override public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2) 
+//			{ 
+//				//Integer v1 = e1.getValue(); Integer v2 = e2.getValue(); 
+//				int num = e2.getValue().compareTo(e1.getValue());
+//				if(num==0) {
+//					return e1.getKey().compareTo(e2.getKey());
+//				}
+//				return num;
+//				//return v1.compareTo(v2); 
+//			} 
+//		}; 
+		
+		Comparator<Entry<String, Integer>> valueComparator = (o1,o2)->{
+			int num = o2.getValue().compareTo(o1.getValue());
+			if(num==0) return o1.getKey().compareTo(o2.getKey());
+			return num;
+		};
+		
 		// Sort method needs a List, so let's first convert Set to List in Java 
 		List<Entry<String, Integer>> listOfEntries = new ArrayList<Entry<String, Integer>>(codenames.entrySet()); 
 		// sorting HashMap by values using comparator 
