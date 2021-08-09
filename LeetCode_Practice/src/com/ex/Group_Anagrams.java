@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Group_Anagrams {
 	
@@ -29,7 +30,7 @@ public class Group_Anagrams {
 	        }
 		 	List<List<String>> alist = new ArrayList<List<String>>();
 
-	        for(Map.Entry<String, ArrayList<String>> m : hm.entrySet()) {
+	        for(Entry<String, List<String>> m : hm.entrySet()) {
 	        	alist.add(m.getValue());
 	        }
 	        
