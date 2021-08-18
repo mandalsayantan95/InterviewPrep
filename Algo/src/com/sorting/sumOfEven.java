@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class sumOfEven {
 	
-	private int findSum(List<Integer> list) {
+	private static int findSum(List<Integer> list) {
 
 		int sum = 0;
 	
@@ -17,8 +17,8 @@ public class sumOfEven {
 		
 		s = list.stream().filter(i->(i/2==0)).collect(Collectors.toList());
 		
-		sum = s.stream().
-		
+		//sum = s.stream().
+		return 0;
 	}
 	
 	
