@@ -16,7 +16,7 @@ public class Search_an_element_in_sorted_and_rotated_array {
 			}
 			
 			if (nums[l]<nums[mid]) {
-				if (nums[l]<=target && nums[r]>target) {
+				if (nums[l]<=target && nums[mid]>target) {
 					r = mid-1;
 				}
 				else {
