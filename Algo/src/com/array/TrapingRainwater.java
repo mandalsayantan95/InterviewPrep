@@ -2,33 +2,29 @@ package com.array;
 
 public class TrapingRainwater {
 	
-	public int trap(int[] arr) {
+	public int trap(int[] height) {
         
-        int n = arr.length;
-        int [] leftmax = new int[n];
-        int [] rightmax = new int[n];
-        
-        int max = arr[0];
-        for(int i=1;i<n;i++){
-        	if (arr[i]>max) {
-        		max = arr[i];
-			}
-        	rightmax[i] = max;
+		int left = 0, right = height.length - 1;
+        int res = 0, maxleft = 0, maxright = 0;
+        while (left <= right) {
+            if (height[left] <= height[right]) {
+                if (height[left] >= maxleft) {
+                    maxleft = height[left];
+                } else {
+                    res += maxleft - height[left];
+                }
+                left++;
+            }
+            else {
+               if (height[right] >= maxright) {
+                   maxright = height[right];
+               } else {
+                   res += maxright - height[right];
+               }
+                right--;
+            }
         }
-        
-        max = arr[n-1];
-        for(int i=n-2;i>=0;i--){
-        	if (arr[i]>max) {
-        		max = arr[i];
-			}
-        	leftmax[i] = max;
-        }
-        
-        int maxwater = 0; 
-        for (int i = 1; i < n-1; i++) {
-			maxwater  = maxwater + (Math.min(leftmax[i], rightmax[i]) - arr[i]);
-		}
-        return maxwater;
+        return res;
     
 }
 
