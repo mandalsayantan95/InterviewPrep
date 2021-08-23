@@ -12,31 +12,31 @@ public class _3Sum {
     
 		Arrays.sort(arr);
 	
-		Set<List<Integer>> res = new HashSet<List<Integer>>();
+		List<List<Integer>> res = new ArrayList<List<Integer>>();
 		for (int i = 0; i < arr.length-2; i++) {
-			int a = arr[i];
-			int low = i+1;
-			int high = arr.length-1;
-			while (low<high) {
-				if (arr[low]+arr[high] == -a) {
-					//store the result
-					List<Integer> al = new ArrayList<>();
-					al.add(a);
-					al.add(arr[low]);
-					al.add(arr[high]);
-					res.add(al);
-					high--;
-					low++;
-				}
-				else if(arr[low]+arr[high] > -a) {
-					high--;
-				} else {
-					low++;
+			if (i == 0 || (i > 0 && arr[i] != arr[i-1])) {
+				int a = arr[i];
+				int low = i+1;
+				int high = arr.length-1;
+				while (low<high) {
+					if (arr[low]+arr[high] == -a) {
+						//store the result
+						res.add(Arrays.asList(a,arr[low],arr[high]));
+						while (low < high && arr[low] == arr[low+1]) low++;
+						while (low < high && arr[high] == arr[high-1]) high--;
+						high--;
+						low++;
+					}
+					else if(arr[low]+arr[high] > -a) {
+						high--;
+					} else {
+						low++;
+					}
 				}
 			}
 		}
 		
-		return new ArrayList<List<Integer>>(res);
+		return res;
 		
     }
 	
