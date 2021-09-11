@@ -1,41 +1,37 @@
 package com.stack;
 
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.Stack;
+
 public class LargestRectengularAreaHistogram {
 	
 	public static int largestRectangleArea(int[] arr) {
 		
-		int res = 0;
+		int n = arr.length;
+		int max = 0;
+		Stack<Integer> s = new Stack<Integer>();
 		for (int i = 0; i < arr.length; i++) {
-			int max = arr[i];
-			int j,k = 0;
-			for (j = i-1; j >= 0; j--) {
-				if(arr[j]<arr[i]) {
-					break;
-				}
+			while(s.isEmpty()==false && arr[i] <=  arr[s.peek()]) {
+				int temp = s.pop();
+				int curr = arr[temp] * (s.isEmpty()? i :(i-(s.peek()+1)));
+				max = Math.max(max, curr);
 			}
-			
-			for (k = i+1; k < arr.length; k++) {
-				if(arr[k]<arr[i]) {
-					break;
-				}
-			}
-			
-			j=j+1;
-			k=k-1;
-			int temp = arr[i] * (k-j+1);
-			
-			int t = Math.max(temp, max);
-			
-			res = (t>res) ? t : res;
-			
+			s.push(i);
 		}
 		
-		return res;
+		while (s.isEmpty()!=true) {
+			int temp = s.pop();
+			int curr = arr[temp] * (s.isEmpty()? n:(n-(s.peek()+1)));
+			max = Math.max(max,curr);
+		}
+		
+		return max;		
     }
 
 	public static void main(String[] args) {
 		
-		int [] arr = {2,3};
+		int [] arr = {9,0};
 		System.out.println(largestRectangleArea(arr));
 
 	}
