@@ -2,16 +2,12 @@ package com.statepattern;
 
 import lombok.Getter;
 
-
+@Getter
 public class GumballMachine {
-	
-	@Getter
+
 	State soldOutState;
-	@Getter
 	State noQuarterState;
-	@Getter
 	State hasQuarterState;
-	@Getter
 	State soldState;
 	
 	State state = soldOutState;
